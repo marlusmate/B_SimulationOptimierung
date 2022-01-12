@@ -1,0 +1,23 @@
+name: model-slugging-quality
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: cml_run
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          #Own Workflow
+          
+          echo "## Model metrics" > report.md
+          cat metricsModel.txt >> report.md
+          
+          echo "## Data viz" >> report.md
+          cml-publish MetricsMLBarplot.png --md >> report.md
+          cml-publish MetricsMLConfusionmatrix.png --md >> report.md
+          
+          cml-send-comment report.md
