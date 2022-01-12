@@ -11,7 +11,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
 
-          #Own Workflow
+          #Own Workflow _ RIP
           
           echo "## Model metrics" > report.md
           cat metricsModel.txt >> report.md
