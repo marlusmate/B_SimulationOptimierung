@@ -1,11 +1,4 @@
 stages:
-  get_data:
-    cmd: python get_data.py
-    deps:
-    - get_data.py
-    outs:
-    - FeatureTest.npy
-    - LabelTest.npy
   eval:
     cmd: python TestModel.py
     deps:
