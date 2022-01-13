@@ -1,0 +1,18 @@
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - get_data.py
+    outs:
+    - FeatureTest.npy
+    - LabelTest.npy
+  eval:
+    cmd: python TestModel.py
+    deps:
+    -TestModel.py
+    outs:
+    - MetricsMLBarplot.png
+    - MetricsMLConfusionMatrix.png
+  metrics:
+  - metrics.json
+    cache: false
